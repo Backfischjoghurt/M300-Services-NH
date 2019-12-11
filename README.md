@@ -3,7 +3,7 @@
 
 Vagrant.configure("2") do |config|
 
-  config.vm.define "web" do |web| 
+  .config.vm.define "web" do |web| 
     web.vm.box = "ubuntu/xenial64"
     web.vm.hostname = "SRVWEB"
     web.vom.network "private_network", ip: "192.168.1.5"
@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
     vb.name = "SRVWEB"
     end
 
-    ### Installation und KOnfiguration für web
+    ### Installation und Konfiguration für web
     web.vm.provision "shell", inline: <<-SHELL
     
     ### Update durchführen  
@@ -57,21 +57,27 @@ Vagrant.configure("2") do |config|
     vb.name = "SRVDB"
     end
 
-    # Installation und Konfiguration für db
+    ### Installation und Konfiguration für db
     db.vm.provision "shell", inline: <<-SHELL
-    # Update durchführen
+    
+    ### Update durchführen
     sudo apt-get update
-    # MySQL Root Benutzer Kennwort setzten (root)
+    
+    ### MySQL Root Benutzer Kennwort setzten (root)
     debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
     debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
-    # Installation MySQL
+    
+    ### Installation MySQL
     sudo apt-get install -y php libapache2-mod-php php-curl php-cli php-mysql php-gd mysql-client mysql-server
-    # Zugriffsberechtigungen Root
+    
+    ### Zugriffsberechtigungen Root
     mysql -u root -proot -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root'; FLUSH privileges;"
     sudo service mysql restart
-    # Datenbank anlegen
+    
+    ### Datenbank anlegen
     mysql -u root -p "CREATE DATABASE TEST;"
-    # Firewall konfiguration
+    
+    ### Firewall konfiguration
     ufw --force enable
     sudo ufw allow 3306/tcp
     sudo ufw allow ssh
