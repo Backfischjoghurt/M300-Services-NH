@@ -1,9 +1,9 @@
 # M300-Services-NH
 ==========================
 
-Vagrant.configure("2") do |config|
+ Vagrant.configure("2") do |config|
 
-  .config.vm.define "web" do |web| 
+  # config.vm.define "web" do |web| 
     web.vm.box = "ubuntu/xenial64"
     web.vm.hostname = "SRVWEB"
     web.vom.network "private_network", ip: "192.168.1.5"
@@ -48,7 +48,7 @@ Vagrant.configure("2") do |config|
     SHELL
     end
 
-  config.vm.define "db" do |db| 
+  # config.vm.define "db" do |db| 
     db.vm.box = "ubuntu/xenial64"
     db.vm.hostname = "SRVDB"
     db.vm.network "private_network", ip: "192.168.1.10"
