@@ -5,14 +5,14 @@
 
 ### Konfiguration VM SRVWEB
   config.vm.define "web" do |web| 
-    * web.vm.box = "ubuntu/xenial64"
-    * web.vm.hostname = "SRVWEB"
-    * web.vom.network "private_network", ip: "192.168.1.5"
-    * web.vm.network "forwarded_port", guest: 80, host: 8080
-    * web.vm.provider "virtualbox" do |vb|
-    * vb.memory = "1024"
-    * vb.name = "SRVWEB"
-    * end
+    web.vm.box = "ubuntu/xenial64"
+    web.vm.hostname = "SRVWEB"
+    web.vom.network "private_network", ip: "192.168.1.5"
+    web.vm.network "forwarded_port", guest: 80, host: 8080
+    web.vm.provider "virtualbox" do |vb|
+    vb.memory = "1024"
+    vb.name = "SRVWEB"
+    end
 
     ### Installation und Konfiguration für web
     web.vm.provision "shell", inline: <<-SHELL
@@ -49,15 +49,15 @@
     SHELL
     end
 
-# Konfiguration VM SRVDB
-  * config.vm.define "db" do |db| 
-    * db.vm.box = "ubuntu/xenial64"
-    * db.vm.hostname = "SRVDB"
-    * db.vm.network "private_network", ip: "192.168.1.10"
-    * db.vm.provider "virtualbox" do |vb|
-    * vb.memory = "1024"
-    * vb.name = "SRVDB"
-    * end
+### Konfiguration VM SRVDB
+  config.vm.define "db" do |db| 
+    db.vm.box = "ubuntu/xenial64"
+    db.vm.hostname = "SRVDB"
+    db.vm.network "private_network", ip: "192.168.1.10"
+    db.vm.provider "virtualbox" do |vb|
+    vb.memory = "1024"
+    vb.name = "SRVDB"
+    end
 
     ### Installation und Konfiguration für db
     db.vm.provision "shell", inline: <<-SHELL
