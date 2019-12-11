@@ -4,7 +4,7 @@
  Vagrant.configure("2") do |config|
 
 # Konfiguration VM SRVWEB
-  config.vm.define "web" do |web| 
+  * config.vm.define "web" do |web| 
     web.vm.box = "ubuntu/xenial64"
     web.vm.hostname = "SRVWEB"
     web.vom.network "private_network", ip: "192.168.1.5"
