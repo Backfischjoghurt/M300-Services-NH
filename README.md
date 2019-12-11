@@ -3,7 +3,8 @@
 
  Vagrant.configure("2") do |config|
 
-  # config.vm.define "web" do |web| 
+# Konfiguration VM SRVWEB
+  config.vm.define "web" do |web| 
     web.vm.box = "ubuntu/xenial64"
     web.vm.hostname = "SRVWEB"
     web.vom.network "private_network", ip: "192.168.1.5"
@@ -48,7 +49,8 @@
     SHELL
     end
 
-  # config.vm.define "db" do |db| 
+# Konfiguration VM SRVDB
+  config.vm.define "db" do |db| 
     db.vm.box = "ubuntu/xenial64"
     db.vm.hostname = "SRVDB"
     db.vm.network "private_network", ip: "192.168.1.10"
